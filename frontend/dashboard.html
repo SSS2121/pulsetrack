@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel — PulseTrack</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="dashboard.html" class="logo">
+        <span class="logo-mark" aria-hidden="true"></span>
+        PulseTrack
+      </a>
+      <nav class="main-nav app-nav" aria-label="Navegación de la aplicación">
+        <a href="dashboard.html" class="is-current">Panel</a>
+        <a href="tracker.html">Entrenar</a>
+        <a href="chat.html">Coach IA</a>
+        <button type="button" class="link-btn logout-btn" id="logout-btn">Cerrar sesión</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="dashboard container">
+
+    <div class="dashboard-head">
+      <div>
+        <p class="eyebrow">Hola de nuevo</p>
+        <h1 id="user-name">Cargando tu panel…</h1>
+      </div>
+      <a href="tracker.html" class="btn btn-primary">Iniciar entrenamiento</a>
+    </div>
+
+    <!-- Stats: se llenan desde GET /api/tracker/stats -->
+    <section class="stats-grid" aria-label="Resumen de la semana">
+      <article class="stat-card">
+        <p class="stat-label">Sesiones esta semana</p>
+        <p class="stat-value" id="stat-sessions">—</p>
+      </article>
+      <article class="stat-card">
+        <p class="stat-label">Distancia total</p>
+        <p class="stat-value" id="stat-distance">—</p>
+      </article>
+      <article class="stat-card">
+        <p class="stat-label">Tiempo entrenado</p>
+        <p class="stat-value" id="stat-time">—</p>
+      </article>
+      <article class="stat-card">
+        <p class="stat-label">Calorías estimadas</p>
+        <p class="stat-value" id="stat-calories">—</p>
+      </article>
+    </section>
+
+    <div class="dashboard-columns">
+      <!-- Historial: se llena desde GET /api/tracker/sessions -->
+      <section class="dashboard-panel">
+        <div class="panel-head">
+          <h2>Sesiones recientes</h2>
+        </div>
+        <ul class="session-list" id="session-list">
+          <li class="session-empty" id="session-empty">
+            Aún no tienes sesiones registradas. <a href="tracker.html">Inicia la primera</a>.
+          </li>
+        </ul>
+      </section>
+
+      <!-- Acceso rápido al coach IA -->
+      <section class="dashboard-panel coach-panel">
+        <div class="panel-head">
+          <h2>Tu coach IA</h2>
+        </div>
+        <p class="coach-teaser">
+          Cuéntale cómo te sentiste en tu última sesión y recibe ajustes
+          concretos para tu próximo entrenamiento.
+        </p>
+        <a href="chat.html" class="btn btn-ghost">Hablar con el coach</a>
+      </section>
+    </div>
+
+  </main>
+
+  <script src="js/api.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
